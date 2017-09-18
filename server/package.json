@@ -1,0 +1,33 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "server app for todo list",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "anggie",
+  "license": "GNU General Public License v3.0",
+  "bugs": {
+    "url": "https://github.com/anggraito/cat-list/issues"
+  },
+  "homepage": "https://github.com/anggraito/cat-list#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cors": "^2.8.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.4",
+    "fb": "^2.0.0",
+    "jsonwebtoken": "^7.4.3",
+    "mongoose": "^4.11.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anggraito/cat-list/tree/master"
+  },
+  "keywords": [
+    "api-todo"
+  ]
+}
