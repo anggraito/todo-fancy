@@ -14,6 +14,21 @@ var findAllUser = (req, res) => {
   })
 }
 
+// var signFb = (req, res) => {
+//   jwt.sign({
+//     facebookId: req.body.facebookId,
+//     username: req.body.username
+//   }, process.env.SECRET_JWT, (err, token) => {
+//     if(err){
+//       res.send(err)
+//     }
+//     res.send({
+//       err: false,
+//       token: token
+//     })
+//   })
+// }
+
 var signUp = (req, res) => {
   let hashPassword = bcrypt.hashSync(req.body.password, salt);
   dbModel.create({
@@ -28,7 +43,7 @@ var signUp = (req, res) => {
     })
   })
   .catch(err => {
-    res.send(err.message)
+    res.status(500).send(err)
   })
 }
 
