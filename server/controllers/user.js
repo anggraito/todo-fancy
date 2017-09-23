@@ -16,7 +16,7 @@ var findAllUser = (req, res) => {
 
 var signUp = (req, res) => {
   let hashPassword = bcrypt.hashSync(req.body.password, salt);
-  dbModelc.create({
+  dbModel.create({
     username: req.body.username,
     password: hashPassword,
     email: req.body.email
@@ -28,11 +28,11 @@ var signUp = (req, res) => {
     })
   })
   .catch(err => {
-    res.send(err)
+    res.send(err.message)
   })
 }
 
-var sigIn = (req, res) => {
+var signIn = (req, res) => {
   dbModel.findOne({
     username: req.body.username
   })
@@ -44,16 +44,26 @@ var sigIn = (req, res) => {
         username: user.username,
         email: user.email
       }, process.env.SECRET_JWT)
-      res.send({
-        message: "Berhasil login",
-        auth: auth
-      })
+      res.send(auth)
     } else {
       res.status(500).send({
-        message: 'Sapa lu? Passwordnya salah',
-        err: err
+        message: 'Sapa lu? Passwordnya salah'
       })
     }
+  })
+  .catch(err => {
+    res.status(500).send({
+      message: 'Username tidak tersedia, Perhatikan huruf capital'
+    })
+  })
+}
+
+var deleteUser = (req, res) => {
+  dbModel.findByIdAndRemove({_id: req.params.id})
+  .then(() => {
+    res.send({
+      message: "Berhasil mengahapus user"
+    })
   })
   .catch(err => {
     res.send(err)
@@ -61,13 +71,5 @@ var sigIn = (req, res) => {
 }
 
 module.exports = {
-  findAllUser, signUp, sigIn
-}
-
-
-
-
-// export method yang akan digunakan
-module.exports = {
-  findAllUser
+  findAllUser, signUp, signIn, deleteUser
 }

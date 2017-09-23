@@ -3,29 +3,23 @@ const express = require('express'),
       mongoose = require('mongoose'),
       cors = require('cors'),
       morgan = require('morgan'),
-      axios = require('axios');
-const user = require('./routes/user')
-      // question = require('./routes/question');
-// answer = require('./routes/answer');
+      axios = require('axios')
 const app = express();
-const port = process.env.PORT || 3000 ;
+const port = process.env.PORT || 3000
+
+var url = 'mongodb://localhost/catlist'
+mongoose.connect(url);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
 app.use(morgan('dev'))
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-// connect database
-var url = 'mongodb://localhost/catlist'; 
-mongoose.connect(url);
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+const user = require('./routes/user')
 
-// route setting use
-app.use('/users', user)
-// app.use('/questions', question)
-// app.use('/answer', answer)
-
+app.use('/api', user)
 
 app.listen(port);
 console.log('Your presentation is running on http://localhost:' + port);
