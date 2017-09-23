@@ -7,7 +7,7 @@ const controllerTodo = require('../controllers/todo')
 router.get('/', controllerTodo.findAllTodo)
 router.post('/', controllerTodo.createTodo)
 router.get('/:id', controllerTodo.findOneTodo)
-// router.post('/signin', controllerTodo.signIn)
-// router.delete('/users/:id', controllerTodo.deleteUser)
+router.patch('/:id', controllerTodo.updateTodo)
+router.delete(':id', controllerTodo.deleteTodo)
 
 module.exports = router

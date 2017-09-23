@@ -76,5 +76,5 @@ var deleteTodo = (req, res) => {
 
 module.exports = {
   findAllTodo, findOneTodo,
-  createTodo, updateTodo
+  createTodo, updateTodo, deleteTodo
 }
