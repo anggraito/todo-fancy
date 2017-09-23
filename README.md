@@ -2,6 +2,8 @@
 
 This is todo app prototype use node.js, express, jwt and for database use mongoose
 
+Unique fitur, has due date (plan)
+
 ## Enpoint
 
 Route | HTTP | Description
@@ -21,11 +23,11 @@ Route | HTTP | Description
 * [Node](https://nodejs.org/en/) - Node JS
 
 ## Run this API
-Clone the repository and u should install the package who's declare on this file. You just doing :
+Clone the repository, take to folder server. Then you should install the package who's declare on this file. You just doing :
 ```
 npm install
-nodemon app.js
+npm run dev
 ```
 
 Running the application in your browser with :
-> localhost:3000
+> localhost:3000/api/<endpoint>

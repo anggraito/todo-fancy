@@ -12,6 +12,16 @@ var isLogin = (req,res, next) => {
   })
 }
 
+var thisUser = (req, res, next) => {
+  if(req.id == req.params.id){
+    next()
+  } else {
+    res.status(401).send({
+      message: "Stop! ini bukan daerah kekuasaanmu"
+    })
+  }
+}
+
 module.exports = {
-  isLogin
+  isLogin, thisUser
 }
