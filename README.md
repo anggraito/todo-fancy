@@ -8,6 +8,11 @@ Route | HTTP | Description
 ------------ | ------------- | ------------
 /signup | POST | Create new user
 /signin | POST | Login as user
+/todos | GET | Show all todos(authentication user)
+/todos/:id | GET | Show detail todo(authentication user)
+/todos | POST | Create ne todo(authentication user)
+/todos/:id | PATCH | Update todo(authentication user)
+/todos/:id | DELETE | Delete todo(authentication user)
 
 
 ## Build with:
