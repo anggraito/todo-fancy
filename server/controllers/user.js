@@ -9,8 +9,8 @@ var findAllUser = (req, res) => {
   .then((users) => {
     res.send(users)
   })
-  .catch(error => {
-    res.send(error)
+  .catch(err => {
+    res.send(err)
   })
 }
 
