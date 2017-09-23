@@ -24,7 +24,7 @@ var createTodo = (req, res) => {
   var tags = req.body.tags.split(',');
   tags = tags.map(tag => tag.trim());
   modelTodo.create({
-    creator: req.body.userId,
+    creator: req.body.creator,
     list: req.body.list,
     dueDate: req.body.dueDate,
     status: 'false',
@@ -41,7 +41,7 @@ var createTodo = (req, res) => {
 var updateTodo = (req, res) => {
   modelTodo.findById(req.params.id)
   .then(todo => {
-    todo.creator = req.body.userId || todo.creator
+    todo.creator = req.body.creator || todo.creator
     todo.list = req.body.list || todo.list
     todo.dueDate = req.body.dueDate || todo.dueDate
     todo.status = req.body.status || todo.status
