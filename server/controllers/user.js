@@ -1,49 +1,21 @@
-const dbModel = require('../models/User');
+const dbModel = require('../models/User')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-const salt = bcrypt.genSaltSync(10);
+const salt = bcrypt.genSaltSync(10)
 require('dotenv').config()
 
-var findAllUser = (req, res) => {
-  dbModel.find()
-  .then((users) => {
-    res.send(users)
-  })
-  .catch(err => {
-    res.send(err)
-  })
-}
-
-// var signFb = (req, res) => {
-//   jwt.sign({
-//     facebookId: req.body.facebookId,
-//     username: req.body.username
-//   }, process.env.SECRET_JWT, (err, token) => {
-//     if(err){
-//       res.send(err)
-//     }
-//     res.send({
-//       err: false,
-//       token: token
-//     })
-//   })
-// }
-
 var signUp = (req, res) => {
-  let hashPassword = bcrypt.hashSync(req.body.password, salt);
+  var hashPassword = bcrypt.hashSync(req.body.password, salt)
   dbModel.create({
     username: req.body.username,
     password: hashPassword,
     email: req.body.email
   })
   .then((user) => {
-    res.send({
-      message: "Berhasil menambah user",
-      user: user
-    })
+    res.send(user)
   })
   .catch(err => {
-    res.status(500).send(err)
+    res.send(err.errmsg)
   })
 }
 
@@ -72,6 +44,31 @@ var signIn = (req, res) => {
     })
   })
 }
+
+var findAllUser = (req, res) => {
+  dbModel.find()
+  .then((users) => {
+    res.send(users)
+  })
+  .catch(err => {
+    res.send(err)
+  })
+}
+
+// var signFb = (req, res) => {
+//   jwt.sign({
+//     facebookId: req.body.facebookId,
+//     username: req.body.username
+//   }, process.env.SECRET_JWT, (err, token) => {
+//     if(err){
+//       res.send(err)
+//     }
+//     res.send({
+//       err: false,
+//       token: token
+//     })
+//   })
+// }
 
 var deleteUser = (req, res) => {
   dbModel.findByIdAndRemove({_id: req.params.id})

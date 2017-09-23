@@ -19,7 +19,7 @@ var todoSchema = new Schema({
   tags: [{
     type: String
   }],
-}, {
+},{
   timestamps: true
 })
 

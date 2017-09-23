@@ -2,6 +2,10 @@ const modelTodo = require('../models/Todo')
 
 var findAllTodo = (req, res) => {
   modelTodo.find()
+  .populate({
+    path: 'creator',
+    select: 'username'
+  })
   .then(todos => {
     res.send(todos)
   })
