@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-// import controllers yang dipakai
-const modelUser = require('../controllers/user');
+const controllerUser = require('../controllers/user');
 
 // metode bisa get,post,put,delete jika database mongoose
-router.get('/', modelUser.findAllUser)
+router.get('/', controllerUser.findAllUser)
 
 module.exports = router;
