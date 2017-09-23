@@ -6,7 +6,7 @@ var findAllTodo = (req, res) => {
     res.send(todos)
   })
   .catch(err => {
-    res.send(err)
+    res.status(401).send(err)
   })
 }
 
@@ -16,7 +16,7 @@ var findOneTodo = (req, res) => {
     res.send(todo)
   })
   .catch(err => {
-    res.send(err)
+    res.status(401).send(err)
   })
 }
 
@@ -34,13 +34,47 @@ var createTodo = (req, res) => {
     res.send(user)
   })
   .catch(err => {
-    res.send(err)
+    res.status(401).send(err)
   })
 }
 
-// var updateTodo = 
+var updateTodo = (req, res) => {
+  modelTodo.findById(req.params.id)
+  .then(todo => {
+    todo.creator = req.body.userId || todo.creator
+    todo.list = req.body.list || todo.list
+    todo.dueDate = req.body.dueDate || todo.dueDate
+    todo.status = req.body.status || todo.status
+    todo.tags = req.body.tags || todo.tags
+
+    todo.save((err, result) => {
+      if(err) {
+        res.status(401).send(err)
+      }
+      res.send({
+        message: "Data berhasil di update",
+        result: result
+      })
+    })
+  })
+  .catch(err => {
+    res.status(401).send(err)
+  })
+}
+
+var deleteTodo = (req, res) => {
+  modelTodo.findByIdAndRemove({_id: req.params.id})
+  .then(() => {
+    res.send({
+      message: "Todo di hapus"
+    })
+  })
+  .catch(err => {
+    res.status(401).send(err)
+  })
+}
 
 module.exports = {
   findAllTodo, findOneTodo,
-  createTodo
+  createTodo, updateTodo
 }

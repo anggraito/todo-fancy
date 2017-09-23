@@ -17,9 +17,11 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-const user = require('./routes/user')
+const user = require('./routes/user'),
+      todo = require('./routes/todo')
 
 app.use('/api', user)
+app.use('/api/todos', todo)
 
 app.listen(port);
 console.log('Your presentation is running on http://localhost:' + port);
