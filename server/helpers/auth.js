@@ -8,6 +8,7 @@ var isLogin = (req,res, next) => {
       res.send(err)
     } else{
       req.id = decoded.id
+      req.fbId = decoded.facebookId
       console.log("ini decoded id", decoded.id)
       next()
     }
@@ -15,6 +16,7 @@ var isLogin = (req,res, next) => {
 }
 
 var thisUser = (req, res, next) => {
+  
   // if(req.id == ){
   //   return next()
   // } else {
