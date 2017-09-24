@@ -55,21 +55,6 @@ var findAllUser = (req, res) => {
   })
 }
 
-var signFb = (req, res) => {
-  jwt.sign({
-    facebookId: req.body.facebookId,
-    username: req.body.username
-  }, process.env.SECRET_JWT, (err, token) => {
-    if(err){
-      res.send(err)
-    }
-    res.send({
-      err: false,
-      token: token
-    })
-  })
-}
-
 var deleteUser = (req, res) => {
   dbModel.findByIdAndRemove({_id: req.params.id})
   .then(() => {
