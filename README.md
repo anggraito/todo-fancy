@@ -1,6 +1,6 @@
 # TODO LIST Protoype
 
-This is todo app prototype use node.js, express, jwt and for database use mongoose
+This is todo app prototype use node.js, express, jwt, facebok login and for database use mongoose
 
 Unique fitur, has due date (plan) or share facebook
 
