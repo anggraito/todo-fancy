@@ -12,7 +12,10 @@ var signUp = (req, res) => {
     email: req.body.email
   })
   .then((user) => {
-    res.send(user)
+    res.send({
+      message: 'Berhasil menambah user',
+      user: user
+    })
   })
   .catch(err => {
     res.send(err.errmsg)
