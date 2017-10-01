@@ -18,7 +18,7 @@ var signUp = (req, res) => {
     })
   })
   .catch(err => {
-    res.send(err.errmsg)
+    res.send(err)
   })
 }
 

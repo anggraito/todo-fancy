@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script|Kranky|Love+Ya+Like+A+Sister|Roboto+Condensed');
+/* font-family: 'Love Ya Like A Sister', cursive;
+font-family: 'Kranky', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Roboto Condensed', sans-serif; */
+/* *{
+	margin:0;
+	padding:0;
+  box-sizing: content-box;
+} */
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.heading{
+  padding: 0 !important;
+}
+.nav-bar{
+  background-color: #f9f9f9;
+  padding: 10px 5% !important;
+  text-align: center;
+}
+.nav-bar h2{
+  font-family: 'Love Ya Like A Sister', cursive;
+}
+.nav-bar button{
+  margin-bottom: 10px;
+}
+
+.content{
+  margin-top: 20px;
+}
+.form-input{
+  background-color: #dddddd;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px dashed #febb32;
+}
+.done-wrapper ul, .to-wrapper ul{
+  padding-left: 0;
+}
+.done-wrapper ul li{
+  background-color: rgba(254,187,50, 0.8);
+  list-style: none;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+.content-wrap{
+  padding: 10px 5%;
+}
+.todo-wrap{
+  margin-right: 20px;
+  margin-bottom: 15px;
+}
+.todo-wrap, .done-wrapper{
+  height: 520px;
+  position: fixed;
+  overflow-y: scroll;
+}
+.to-wrapper{
+  padding: 10px;
+}
+.to-wrapper, .done-wrapper{
+  background-color: #f9f9f9;
+}
+.to-wrapper li{
+  border: 2px solid #dddddd;
+  padding: 10px;
+  list-style: none;
+  margin-bottom: 15px;
+}
+.to-wrapper .head-list{
+  border-bottom: 1px solid #febb32;
+}
+.head-list{
+  position: relative;
+  border-bottom: 1px solid #f9f9f9;
+  margin-bottom: 10px;
+}
+.head-list p{
+  width: 89%;
+}
+.delete-btn{
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+.delete-btn i, .delete-btn a{
+  color: #c1c41f;
+}
+.done-wrapper .delete-btn i{
+  color: #f9f9f9;
+}
+.bottom-list{
+  display: flex; 
+}
+.bottom-list p{
+  flex-grow: 4;
+}
+.bottom-list button{
+  flex-grow: 1;
+  margin: 0 2px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { ... }
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .nav-bar .button-wrap{
+    position: absolute;
+    top: 3.4%;
+    right: 5%;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { ... }

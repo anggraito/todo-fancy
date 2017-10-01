@@ -15,30 +15,74 @@
 </head>
 <body>
   <div id="app">
-    <header class="container-fluid">
+    <header class="heading container-fluid">
       <nav class="nav nav-bar">
-        <h2>To Do List</h2>
-        <button class="btn">Logout</button>
+        <h2>To-Do <small>List</small></h2>
+        <div class="button-wrap">
+          <button class="btn" data-toggle="modal" 
+          data-target="#newTodo">New Todo</button>
+          <button class="btn">Logout</button>
+        </div>
       </nav>
     </header>
+    <!-- modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="newTodo">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form class="form-input">
+            <label for="input-todo">Input Task</label>
+            <textarea type="text" name="input-todo" class="form-control"></textarea>
+            <label for="duedate">Duedate</label>
+            <input type="date" name="duedate" 
+            class="form-control" placeholder="dd/mm/yyyy" required pattern="[0-9]{2}-[0-12]{2}-[0-9]{4}">
+            <label for="tag">Tags</label>
+            <input type="text" name="tag" class="form-control">
+            <button class="btn btn-warning">Add</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
-    <section class="container-fluid">
-      <div class="row">
-        <div class="col-md-8">
-          <div>
-            <input type="text" name="input-todo">
-            <button class="btn">Add</button>
-          </div>
-          <div>
+    <section class="container-fluid content">
+      <div class="row content-wrap">
+        <div class="col-md-7 todo-wrap">
+          
+          <div class="to-wrapper">
+            <h4>Hello, User there's your plan</h4>
             <ul>
-              <li></li>
-              <li></li>
+              <li>
+                <div class="head-list">
+                  <p>Ini todo dummy yang harus segera diganti vroohh, Ini todo dummy yang harus segera diganti vr
+                    Ini todo dummy yang harus segera diganti vroohh</p>
+                  <div class="delete-btn">
+                    <a href=""><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></a>
+                  </div>
+                </div>
+                <div class="bottom-list">
+                  <p>Due: October 10, 2017</p>
+                  <button class="btn"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                  <button class="btn">Done</button>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div class="col-md-4">
-          test
+        <div class="col-md-4 done-wrapper">
+          <h4>All is done</h4>
+          <ul>
+            <li>
+              <div class="head-list">
+                <p>Ini dummy list todo done, bisa panjang maupun pendek. Ini dummy list todo done</p>
+                <div class="delete-btn">
+                  <a href=""><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </div>
+              </div>
+              <div>
+                <button class="btn"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back Todo</button>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </section>

@@ -28,14 +28,8 @@ var login = new Vue({
     signupUsername : null,
     signupPass : null,
     signupMsg : null
-
-  //   panel: false
   },
   methods: {
-  //   togglePanel() {
-  //     this.panel = !this.panel
-  //   },
-
     login() {
       axios.post('http://localhost:3000/api/signin', {
         username: this.loginUsername,
@@ -45,7 +39,7 @@ var login = new Vue({
         console.log(result.data)
         if (result.data.err) {
           this.loginError = true
-          this.loginMessage = result.data.msg
+          this.loginMessage = result.data.message
           this.loginUsername = null
           this.loginPass = null
         } else {
@@ -56,7 +50,7 @@ var login = new Vue({
           this.loginMessage = null
           this.loginUsername = null
           this.loginPass = null
-          window.location = `${window.location.protocol}//${window.location.hostname}/dashboard`
+          window.location = `http://localhost:${window.location.port}`
         }
       })
       .catch(err => console.log(err))
