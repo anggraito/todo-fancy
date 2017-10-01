@@ -39,7 +39,7 @@ var login = new Vue({
       .then(result => {
         console.log(result.data)
         console.log(result.data.err)
-        if (result.data.err) {
+        if (err) {
           self.loginError = true
           self.loginMessage = result.data.message
           self.loginUsername = null

@@ -9,7 +9,7 @@ var app = new Vue({
   methods: {
     getTodo() {
       var self = this
-      axios.get(`${BASE_URL}/todos/:id` , {
+      axios.get(`${BASE_URL}/todos` , {
         headers: {
           token: localStorage.getItem('accesstoken')
         }
@@ -21,6 +21,10 @@ var app = new Vue({
         // self.username = response.data.creator.username
       })
       .catch(err => console.log(err))
+    },
+    logout() {
+      localStorage.removeItem('accesstoken')
+      window.location = `http://localhost:${window.location.port}/login.html`
     }
   },
   created() {

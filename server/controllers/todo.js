@@ -16,7 +16,7 @@ const modelTodo = require('../models/Todo')
 
 var findOneTodo = (req, res) => {
   modelTodo.find({
-    username:  
+    creator: req.id
   })
   .then(todo => {
     res.send(todo)
@@ -30,7 +30,7 @@ var createTodo = (req, res) => {
   var tags = req.body.tags.split(',');
   tags = tags.map(tag => tag.trim());
   modelTodo.create({
-    creator: req.body.creator,
+    creator: req.id,
     list: req.body.list,
     dueDate: req.body.dueDate,
     status: 'false',
@@ -81,6 +81,6 @@ var deleteTodo = (req, res) => {
 }
 
 module.exports = {
-  findAllTodo, findOneTodo,
-  createTodo, updateTodo, deleteTodo
+  findOneTodo, createTodo, 
+  updateTodo, deleteTodo
 }
