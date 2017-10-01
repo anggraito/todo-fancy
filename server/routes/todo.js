@@ -4,10 +4,10 @@ const router = express.Router()
 
 const controllerTodo = require('../controllers/todo')
 
-router.get('/', authorize.isLogin, authorize.thisUser, controllerTodo.findAllTodo)
-router.post('/', authorize.isLogin, controllerTodo.createTodo)
-router.get('/:id', authorize.isLogin, authorize.thisUser, controllerTodo.findOneTodo)
-router.patch('/:id', authorize.isLogin, authorize.thisUser, controllerTodo.updateTodo)
-router.delete('/:id', authorize.isLogin, authorize.thisUser, controllerTodo.deleteTodo)
+router.get('/', controllerTodo.findAllTodo) //authorize.isLogin, authorize.thisUser
+router.post('/', controllerTodo.createTodo)
+router.get('/:id', controllerTodo.findOneTodo) //authorize.thisUser
+router.patch('/:id', controllerTodo.updateTodo) //authorize.thisUser
+router.delete('/:id', controllerTodo.deleteTodo) //authorize.thisUser
 
 module.exports = router

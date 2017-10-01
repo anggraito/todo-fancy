@@ -12,6 +12,10 @@
   <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
   <script src="https://unpkg.com/vue"></script>
+  <script type="text/javascript">
+    if (localStorage.getItem('accesstoken') != null)
+      window.location = `http://localhost:${window.location.port}`
+  </script>
 </head>
 <body>
   <div id="app">
@@ -48,23 +52,45 @@
         <div class="col-md-7 todo-wrap">
           
           <div class="to-wrapper">
-            <h4>Hello, User there's your plan</h4>
+            <h4>Hello, {{username}} there's your plan</h4>
             <ul>
+              <list-todo inline-template v-for="todo in allList" :todo="todo" :key="todo._id">
               <li>
                 <div class="head-list">
-                  <p>Ini todo dummy yang harus segera diganti vroohh, Ini todo dummy yang harus segera diganti vr
-                    Ini todo dummy yang harus segera diganti vroohh</p>
+                  <h6>{{todo.creator.username}}</h6>
+                  <p>{{todo.list}}</p>
+                  <p>Tags: {{todo.tags}}</p>
                   <div class="delete-btn">
                     <a href=""><i class="fa fa-trash-o" aria-hidden="true"> Delete</i></a>
                   </div>
                 </div>
                 <div class="bottom-list">
-                  <p>Due: October 10, 2017</p>
-                  <button class="btn"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                  <p>Due: {{todo.dueDate}}</p>
+                  <button class="btn" data-toggle="modal" 
+                  data-target="#editTodo">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
                   <button class="btn">Done</button>
                 </div>
               </li>
+            </list-todo>
             </ul>
+          </div>
+        </div>
+        <!-- modal edit -->
+        <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="editTodo">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form class="form-input">
+                <label for="input-todo">Edit Task</label>
+                <textarea type="text" name="input-todo" class="form-control"></textarea>
+                <label for="duedate">Duedate</label>
+                <input type="date" name="duedate" 
+                class="form-control" placeholder="dd/mm/yyyy" required pattern="[0-9]{2}-[0-12]{2}-[0-9]{4}">
+                <label for="tag">Tags</label>
+                <input type="text" name="tag" class="form-control">
+                <button class="btn btn-warning">Add</button>
+              </form>
+            </div>
           </div>
         </div>
 
@@ -100,5 +126,6 @@
 <script src="/assets/js/script.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/data.js"></script>
+<script src="/assets/components/todolist.js"></script>
 </body>
 </html>

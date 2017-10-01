@@ -47,10 +47,7 @@ body{
 .content-wrap{
   padding: 10px 5%;
 }
-.todo-wrap{
-  margin-right: 20px;
-  margin-bottom: 15px;
-}
+
 .todo-wrap, .done-wrapper{
   height: 520px;
   position: fixed;
@@ -77,7 +74,7 @@ body{
   margin-bottom: 10px;
 }
 .head-list p{
-  width: 89%;
+  width: 86%;
 }
 .delete-btn{
   position: absolute;
@@ -110,6 +107,10 @@ body{
     position: absolute;
     top: 3.4%;
     right: 5%;
+  }
+  .todo-wrap{
+    margin-right: 8%;
+    margin-bottom: 15px;
   }
 }
 
