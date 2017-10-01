@@ -4,8 +4,11 @@ require('dotenv').config()
 
 var isLogin = (req,res, next) => {
   jwt.verify(req.headers.token, process.env.SECRET_JWT, (err, decoded) => {
-    if(err) {
-      res.send(err)
+    if(decoded == null || err) {
+      res.send({
+        messase: "wrong token",
+        err: err
+      })
     } else{
       req.id = decoded.id
       req.fbId = decoded.facebookId

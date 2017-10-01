@@ -9,13 +9,13 @@ var app = new Vue({
   methods: {
     getTodo() {
       var self = this
-      axios.get(`${BASE_URL}/todos` , {
+      axios.get(`${BASE_URL}/todos/:id` , {
         headers: {
           token: localStorage.getItem('accesstoken')
         }
       })
       .then(response => {
-        // this.allList = null
+        self.allList = null
         self.allList = response.data
         console.log(response.data)
         // self.username = response.data.creator.username

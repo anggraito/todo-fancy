@@ -14,7 +14,7 @@ $(function() {
       e.preventDefault();
   });
 });
-
+var BASE_URL = 'http://localhost:3000/api'
 var login = new Vue({
   el: '#login',
   data: {
@@ -31,25 +31,27 @@ var login = new Vue({
   },
   methods: {
     login() {
-      axios.post('http://localhost:3000/api/signin', {
-        username: this.loginUsername,
-        password: this.loginPass
+      var self = this
+      axios.post(`${BASE_URL}/signin`, {
+        username: self.loginUsername,
+        password: self.loginPass
       })
       .then(result => {
         console.log(result.data)
+        console.log(result.data.err)
         if (result.data.err) {
-          this.loginError = true
-          this.loginMessage = result.data.message
-          this.loginUsername = null
-          this.loginPass = null
+          self.loginError = true
+          self.loginMessage = result.data.message
+          self.loginUsername = null
+          self.loginPass = null
         } else {
           // $('.container').addClass("active")
           localStorage.setItem('accesstoken', result.data.token)
           // localStorage.setItem('fbAuth', false)
-          this.loginError = false
-          this.loginMessage = null
-          this.loginUsername = null
-          this.loginPass = null
+          self.loginError = false
+          self.loginMessage = null
+          self.loginUsername = null
+          self.loginPass = null
           window.location = `http://localhost:${window.location.port}`
         }
       })

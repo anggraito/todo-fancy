@@ -1,21 +1,23 @@
 const modelTodo = require('../models/Todo')
 
-var findAllTodo = (req, res) => {
-  modelTodo.find()
-  .populate({
-    path: 'creator',
-    select: 'username'
-  })
-  .then(todos => {
-    res.send(todos)
-  })
-  .catch(err => {
-    res.status(401).send(err)
-  })
-}
+// var findAllTodo = (req, res) => {
+//   modelTodo.find()
+//   .populate({
+//     path: 'creator',
+//     select: 'username'
+//   })
+//   .then(todos => {
+//     res.send(todos)
+//   })
+//   .catch(err => {
+//     res.status(401).send(err)
+//   })
+// }
 
 var findOneTodo = (req, res) => {
-  modelTodo.findById(req.params.id)
+  modelTodo.find({
+    username:  
+  })
   .then(todo => {
     res.send(todo)
   })

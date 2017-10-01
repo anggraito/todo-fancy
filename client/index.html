@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="/assets/css/bootstrap-theme.min.css">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
   <script src="https://unpkg.com/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script type="text/javascript">
-    if (localStorage.getItem('accesstoken') != null)
-      window.location = `http://localhost:${window.location.port}`
+    if (localStorage.getItem('accesstoken') == null) {
+      window.location = `http://localhost:${window.location.port}/login.html`
+    }
   </script>
 </head>
 <body>
@@ -52,7 +54,7 @@
         <div class="col-md-7 todo-wrap">
           
           <div class="to-wrapper">
-            <h4>Hello, {{username}} there's your plan</h4>
+            <h4>Hello, username there's your plan</h4>
             <ul>
               <list-todo inline-template v-for="todo in allList" :todo="todo" :key="todo._id">
               <li>
@@ -122,7 +124,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="/assets/js/script.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/data.js"></script>

@@ -36,7 +36,7 @@ var signIn = (req, res) => {
       }, process.env.SECRET_JWT)
       res.send(auth)
     } else {
-      res.status(500).send({
+      res.send({
         message: 'Sapa lu? Passwordnya salah'
       })
     }
